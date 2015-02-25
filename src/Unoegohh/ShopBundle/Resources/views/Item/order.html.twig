@@ -1,0 +1,68 @@
+{% extends "UnoegohhShopBundle:Default:index.html.twig" %}
+
+{% block main %}
+    <section id="main" class="entire_width">
+        <div class="container_12">
+            <div id="content">
+                <div class="grid_12">
+                    <h1 class="page_title">Оформление заказа</h1>
+                </div><!-- .grid_12 -->
+
+                <div class="grid_4 adress">
+                    <h3>Наш адрес</h3>
+                    <p>{{ pref().address }}</p>
+                    <hr>
+
+                    <h3>Телефон</h3>
+                    <p>Наш офис: <span>{{ pref().phone }}</span></p>
+                    <hr>
+
+                    <h3>Email</h3>
+                    <p>{{ pref().email }}</p>
+                </div><!-- .adress -->
+
+                <div class="grid_8">
+                    <form class="contact" method="POST" action="?">
+                        <h2>Контактная информация</h2>
+
+                        {{ form_errors(form) }}
+                        {{ form_row(form._token) }}
+                        {{ form_row(form.order, {'attr' : {'value': "[[cartinstring]]" }}) }}
+                        {{ form_row(form.totalPrice, {'attr' : {'value': "[[totalCart]]" }}) }}
+                        <div class="name">
+                            <strong>Имя:</strong><sup class="surely">*</sup><br>
+                            {{ form_widget(form.fio) }}
+                        </div><!-- .name -->
+
+                        <div class="email">
+                            <strong>Email: </strong><sup class="surely">*</sup><br>
+                            {{ form_widget(form.email) }}
+                        </div><!-- .email -->
+
+                        <div class="email">
+                            <strong>Адрес:</strong><sup class="surely">*</sup><br>
+                            {{ form_widget(form.address) }}
+                        </div><!-- .phone -->
+
+                        <div class="phone">
+                            <strong>Телефон:</strong><sup class="surely">*</sup><br>
+                            {{ form_widget(form.phone) }}
+                        </div><!-- .phone -->
+
+                        <div class="comment">
+                            <strong>Коментарий:</strong><br>
+                            {{ form_widget(form.descr) }}
+                        </div><!-- .comment -->
+
+                        <div class="submit">
+                            <div class="field"><sup class="surely">*</sup><span>Обязательные поля</span></div>
+                            <input type="submit" value="Отправить">
+                        </div><!-- .submit -->
+                    </form><!-- .contact -->
+                </div><!-- .grid_8 -->
+            </div><!-- #content -->
+
+            <div class="clear"></div>
+        </div><!-- .container_12 -->
+    </section>
+{% endblock %}

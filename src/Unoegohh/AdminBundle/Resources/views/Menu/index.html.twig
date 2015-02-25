@@ -1,0 +1,67 @@
+{% extends "UnoegohhAdminBundle::layout.html.twig" %}
+
+{% block content %}
+
+    <!-- Datatables Header -->
+    <div class="content-header">
+        <div class="header-section">
+            <h1>
+                <i class="fa fa-table"></i>Элементы меню</small>
+            </h1>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li><a href="{{ path("unoegohh_admin_homepage") }}">Главная</a></li>
+        <li>Элементы меню</li>
+    </ul>
+    <!-- END Datatables Header -->
+
+    <!-- Datatables Content -->
+    <div class="block full">
+        <div class="block-title">
+            <h2><strong>Элементы меню</strong></h2>
+
+            <div class="block-options pull-right">
+                <a href="{{ path("unoegohh_admin_menu_create") }}" class="btn btn-sm btn-success btn-option">Добавить</a>
+            </div>
+        </div>
+
+        {% for i in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="fa fa-check-circle"></i> {{ i }}</h4>
+            </div>
+        {% endfor %}
+        {% if menu %}
+            <div class="table-responsive">
+                <table id="products" class="table table-vcenter table-condensed table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Id</th>
+                        <th>Название</th>
+                        <th>Url</th>
+                        <th class="text-center">Действия</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in menu %}
+                        <tr>
+                            <td class="text-center">{{ i.id }}</td>
+                            <td>{{ i.name }}</td>
+                            <td>{{ i.url }}</td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <a href="{{ path("unoegohh_admin_menu_edit", {"id": i.id}) }}" data-toggle="tooltip" title="" class="btn btn-xs btn-default" data-original-title="Редактирование"><i class="fa fa-pencil"></i></a>
+                                    <a href="{{ path("unoegohh_admin_menu_remove", {"id": i.id}) }}" data-toggle="tooltip" title="" class="btn btn-xs btn-danger" data-original-title="Удаление"><i class="fa fa-times"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>Нет меню :(</p>
+        {% endif %}
+    </div>
+{% endblock %}

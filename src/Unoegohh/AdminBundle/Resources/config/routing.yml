@@ -1,0 +1,193 @@
+unoegohh_admin_homepage:
+    path:     /
+    defaults: { _controller: UnoegohhAdminBundle:Default:index }
+
+# site prefs
+unoegohh_admin_site_pref:
+    path:     /site_pref
+    defaults: { _controller: UnoegohhAdminBundle:SitePref:index }
+
+# food category
+unoegohh_admin_food_category:
+    path:     /item_cat
+    defaults: { _controller: UnoegohhAdminBundle:ItemCategory:index }
+
+unoegohh_admin_food_category_create:
+    path:     /item_cat/create
+    defaults: { _controller: UnoegohhAdminBundle:ItemCategory:create }
+
+unoegohh_admin_food_category_edit:
+    path:     /item_cat/edit/{id}
+    defaults: { _controller: UnoegohhAdminBundle:ItemCategory:edit }
+
+unoegohh_admin_food_category_remove:
+    path:     /item_cat/remove/{id}
+    defaults: { _controller: UnoegohhAdminBundle:ItemCategory:remove }
+
+unoegohh_admin_food_category_remove_ok:
+    path:     /item_cat/remove/{id}/ok
+    defaults: { _controller: UnoegohhAdminBundle:ItemCategory:removeOk }
+
+# banners
+unoegohh_admin_banners:
+    path:     /banners
+    defaults: { _controller: UnoegohhAdminBundle:MainBanner:index }
+
+unoegohh_admin_banners_create:
+    path:     /banners/create
+    defaults: { _controller: UnoegohhAdminBundle:MainBanner:create }
+
+unoegohh_admin_banners_edit:
+    path:     /banners/edit/{id}
+    defaults: { _controller: UnoegohhAdminBundle:MainBanner:edit }
+
+unoegohh_admin_banners_remove:
+    path:     /banners/remove/{id}
+    defaults: { _controller: UnoegohhAdminBundle:MainBanner:remove }
+
+unoegohh_admin_banners_remove_ok:
+    path:     /banners/remove/{id}/ok
+    defaults: { _controller: UnoegohhAdminBundle:MainBanner:removeOk }
+
+# food item
+unoegohh_admin_food_item:
+    path:     /item
+    defaults: { _controller: UnoegohhAdminBundle:Item:index }
+
+unoegohh_admin_food_item_create:
+    path:     /item/create
+    defaults: { _controller: UnoegohhAdminBundle:Item:create }
+
+unoegohh_admin_food_item_edit:
+    path:     /item/edit/{id}
+    defaults: { _controller: UnoegohhAdminBundle:Item:edit }
+
+unoegohh_admin_food_item_remove:
+    path:     /item/remove/{id}
+    defaults: { _controller: UnoegohhAdminBundle:Item:remove }
+
+unoegohh_admin_food_item_remove_ok:
+    path:     /item/remove/{id}/ok
+    defaults: { _controller: UnoegohhAdminBundle:Item:removeOk }
+
+unoegohh_admin_photo_add:
+    path:     /item/photo/add/{id}
+    defaults: { _controller: UnoegohhAdminBundle:Item:imageUpload }
+
+unoegohh_admin_photo_remove:
+    path:     /item/photo/remove/{id}
+    defaults: { _controller: UnoegohhAdminBundle:Item:removeImage }
+
+# static pages
+
+unoegohh_admin_static_page:
+    path:     /static_page
+    defaults: { _controller: UnoegohhAdminBundle:StaticPage:index }
+
+unoegohh_admin_static_page_create:
+    path:     /static_page/create
+    defaults: { _controller: UnoegohhAdminBundle:StaticPage:create }
+
+unoegohh_admin_static_page_edit:
+    path:     /static_page/edit/{id}
+    defaults: { _controller: UnoegohhAdminBundle:StaticPage:edit }
+
+unoegohh_admin_static_page_remove:
+    path:     /static_page/remove/{id}
+    defaults: { _controller: UnoegohhAdminBundle:StaticPage:remove }
+
+unoegohh_admin_static_page_remove_ok:
+    path:     /static_page/remove/{id}/ok
+    defaults: { _controller: UnoegohhAdminBundle:StaticPage:removeOk }
+
+unoegohh_admin_static_page_image_upload:
+    path:     /static_page/upload
+    defaults: { _controller: UnoegohhAdminBundle:StaticPage:imageUpload }
+
+#menu
+
+unoegohh_admin_menu:
+    path:     /menu
+    defaults: { _controller: UnoegohhAdminBundle:MenuItem:index }
+
+unoegohh_admin_menu_create:
+    path:     /menu/create
+    defaults: { _controller: UnoegohhAdminBundle:MenuItem:create }
+
+unoegohh_admin_menu_edit:
+    path:     /menu/edit/{id}
+    defaults: { _controller: UnoegohhAdminBundle:MenuItem:edit }
+
+unoegohh_admin_menu_remove:
+    path:     /menu/remove/{id}
+    defaults: { _controller: UnoegohhAdminBundle:MenuItem:remove }
+
+unoegohh_admin_menu_remove_ok:
+    path:     /menu/remove/{id}/ok
+    defaults: { _controller: UnoegohhAdminBundle:MenuItem:removeOk }
+
+#customer request
+unoegohh_admin_customer_request:
+    path:     /customer_request
+    defaults: { _controller: UnoegohhAdminBundle:CustomerRequest:index }
+
+unoegohh_admin_customer_request_edit:
+    path:     /customer_request/edit/{id}
+    defaults: { _controller: UnoegohhAdminBundle:CustomerRequest:edit }
+
+unoegohh_admin_customer_request_remove:
+    path:     /customer_request/remove/{id}
+    defaults: { _controller: UnoegohhAdminBundle:CustomerRequest:remove }
+
+unoegohh_admin_customer_request_remove_ok:
+    path:     /customer_request/remove/{id}/ok
+    defaults: { _controller: UnoegohhAdminBundle:CustomerRequest:removeOk }
+
+
+#user
+
+unoegohh_admin_user:
+    path:     /user
+    defaults: { _controller: UnoegohhAdminBundle:User:index }
+
+unoegohh_admin_user_edit:
+    path:     /user/edit/{id}
+    defaults: { _controller: UnoegohhAdminBundle:User:edit }
+
+unoegohh_admin_user_remove:
+    path:     /user/remove/{id}
+    defaults: { _controller: UnoegohhAdminBundle:User:remove }
+
+unoegohh_admin_user_remove_ok:
+    path:     /user/remove/{id}/ok
+    defaults: { _controller: UnoegohhAdminBundle:User:removeOk }
+
+#news
+
+unoegohh_admin_news:
+    path:     /news
+    defaults: { _controller: UnoegohhAdminBundle:News:index }
+
+unoegohh_admin_news_create:
+    path:     /news/create
+    defaults: { _controller: UnoegohhAdminBundle:News:create }
+
+unoegohh_admin_news_edit:
+    path:     /news/edit/{id}
+    defaults: { _controller: UnoegohhAdminBundle:News:edit }
+
+unoegohh_admin_news_remove:
+    path:     /news/remove/{id}
+    defaults: { _controller: UnoegohhAdminBundle:News:remove }
+
+unoegohh_admin_news_remove_ok:
+    path:     /news/remove/{id}/ok
+    defaults: { _controller: UnoegohhAdminBundle:News:removeOk }
+
+unoegohh_admin_news_add:
+    path:     /news/photo/add/{id}
+    defaults: { _controller: UnoegohhAdminBundle:News:imageUpload }
+
+unoegohh_admin_news_remove:
+    path:     /news/photo/remove/{id}
+    defaults: { _controller: UnoegohhAdminBundle:News:removeImage }

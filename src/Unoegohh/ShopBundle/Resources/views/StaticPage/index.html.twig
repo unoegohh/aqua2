@@ -1,0 +1,25 @@
+{% extends "UnoegohhShopBundle:Default:index.html.twig" %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block main %}
+
+    <div class="container clearfix">
+
+    <div class="sixteen columns"> <h1 class="page-title">{{ page.title }}<span class="line"></span></h1>
+    </div><!-- Page Title -->
+
+
+
+    <!-- Start Contact Form -->
+    <div class="sixteen columns  bottom">
+
+        {{ page.text | raw }}
+    </div><!-- End column -->
+
+
+
+
+    <div class="clearfix"></div>
+
+{% endblock %}

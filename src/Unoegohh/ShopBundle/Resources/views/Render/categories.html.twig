@@ -1,0 +1,10 @@
+
+<ul class="first_level">
+
+    {% for cat in menu %}
+    <li {% if active %} class="active"{% endif %}>
+        <a href="{{ path("unoegohh_shop_category", {"categoryName":cat.engName}) }}"><span class="icon"></span>{{ cat.Name }}</a>
+
+    </li>
+    {% endfor %}
+</ul>

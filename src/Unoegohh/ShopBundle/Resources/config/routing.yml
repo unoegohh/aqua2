@@ -1,0 +1,54 @@
+unoegohh_shop_homepage:
+    path:     /
+    defaults: { _controller: UnoegohhShopBundle:Default:index }
+
+unoegohh_shop_category:
+    path:     /category/{categoryId}
+    defaults: { _controller: UnoegohhShopBundle:Shop:index , categoryId: ''}
+
+unoegohh_shop_search:
+    path:     /search
+    defaults: { _controller: UnoegohhShopBundle:Shop:search }
+
+unoegohh_shop_item:
+    path:     /item/{id}
+    defaults: { _controller: UnoegohhShopBundle:Shop:item }
+
+unoegohh_shop_cart_update:
+    path:     /cart/update
+    defaults: { _controller: UnoegohhShopBundle:Shop:updateCart}
+
+unoegohh_shop_cart:
+    path:     /cart
+    defaults: { _controller: UnoegohhShopBundle:Shop:cart}
+
+
+unoegohh_shop_news:
+    path:     /news
+    defaults: { _controller: UnoegohhShopBundle:News:index}
+
+unoegohh_shop_news_item:
+    path:     /news/{id}
+    defaults: { _controller: UnoegohhShopBundle:News:item}
+
+unoegohh_shop_cash_order:
+    path:     /order/cash
+    defaults: { _controller: UnoegohhShopBundle:Shop:cashPayment}
+
+unoegohh_shop_cash_order_sent:
+    path:     /order/sent
+    defaults: { _controller: UnoegohhShopBundle:Shop:orderSent}
+
+unoegohh_shop_contact:
+    path:     /contact_us
+    defaults: { _controller: UnoegohhShopBundle:Default:contact}
+
+unoegohh_shop_contact_sent:
+    path:     /contact_us/sent
+    defaults: { _controller: UnoegohhShopBundle:Default:contactSent}
+
+unoegohh_shop_cash_static_page:
+    path:     /{url}
+    defaults: { _controller: UnoegohhShopBundle:StaticPage:show}
+    requirements:
+        url: ".*"

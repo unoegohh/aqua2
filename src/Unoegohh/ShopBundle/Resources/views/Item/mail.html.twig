@@ -1,0 +1,23 @@
+Здравствуйте!  <br/>
+Ваш заказ -
+
+<table class="table">
+    <tr>
+        <th>Название</th>
+        <th>Цена</th>
+        <th>Кол-во</th>
+    </tr>
+    {% for i in order.items %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.price }} руб</td>
+            <td>{{ i.count }} </td>
+        </tr>
+    {% endfor %}
+    <tr>
+        <td class="text-right" colspan="2">Итого:</td>
+        <td><b>{{ item.totalPrice }}</b> руб</td>
+    </tr>
+</table>
+
+<p>В ближайшее время с вами свяжутся!</p>

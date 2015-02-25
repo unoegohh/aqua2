@@ -1,0 +1,3 @@
+unoegohh_entities_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: UnoegohhEntitiesBundle:Default:index }

@@ -1,0 +1,140 @@
+{% extends "UnoegohhAdminBundle::layout.html.twig" %}
+
+
+{% block scripts %}
+    <script>
+        $(function(){
+            var _validFileExtensions = [".jpg", ".jpeg", ".gif", ".png"];
+
+            function Validate(oForm) {
+                var arrInputs = $("input", oForm);
+                for (var i = 0; i < arrInputs.length; i++) {
+                    var oInput = arrInputs[i];
+                    if (oInput.type == "file") {
+                        var sFileName = oInput.value;
+                        if (sFileName.length > 0) {
+                            var blnValid = false;
+                            for (var j = 0; j < _validFileExtensions.length; j++) {
+                                var sCurExtension = _validFileExtensions[j];
+                                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                                    blnValid = true;
+                                    break;
+                                }
+                            }
+
+                            if (!blnValid) {
+                                alert("Ошибка, " + sFileName + "  с неправильным разширением, допустимые разширения: " + _validFileExtensions.join(", "));
+                                return false;
+                            }
+                        }
+                    }
+                }
+
+                return true;
+            }
+
+            $(document).on('change', '#imgInp',function(){
+
+                if(Validate($('#upload_image'))){
+
+                    $('#upload_image').submit();
+                }
+
+            });
+            $(document).on('click', '.remove_image',function(e){
+                e.preventDefault();
+
+                var href =$(this).attr("href");
+                var $parent = $(this).parents(".gallery-image");
+                $.post(href, function(data){
+                    if(typeof(data.ok) == "undefined"){
+                        alert("Ошибка! Звонить админу!!!");
+
+                    }else{
+                        $parent.remove();
+                    }
+
+                })
+
+            });
+            $('#upload_image').ajaxForm({
+                beforeSubmit: function(){
+                    $("#eee").html('<i class="fa fa-asterisk fa-spin text-info"></i>');
+                },
+                success: function(data) {
+                    $("#eee").html('');
+                    if(typeof(data.msg) == "undefined"){
+
+                        alert("Ошибка! Звонить админу!!!");
+                    }else{
+
+                        var $gallery  = $(".gallery .row");
+                        var $item = $('<div class="col-sm-4 gallery-image"><img src="' +data.msg + '" alt="image" width="134" height="89"><div class="gallery-image-options text-center"><div class="btn-group btn-group-sm"><a href="' +data.msg + '" class="gallery-link btn btn-sm btn-alt btn-default">Просмотр</a><a href="/admin/news/photo/remove/' +data.id + '" class="btn btn-sm btn-alt btn-default remove_image" data-toggle="tooltip" title="" data-original-title="Удалить"><i class="fa fa-times"></i></a></div></div></div>');
+                        $gallery.append($item);
+                    }
+                    $("#imgInp").val("");
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="content-header">
+        <div class="header-section">
+            <h1>
+                Редактирование баннера
+            </h1>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li><a href="{{ path("unoegohh_admin_homepage") }}">Главная</a></li>
+        <li><a href="{{ path("unoegohh_admin_news") }}">Новости</a></li>
+        <li>Редактирование</li>
+    </ul>
+    <div class="row">
+        <div class="col-md-12">
+            {% for i in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="fa fa-check-circle"></i> {{ i }}</h4>
+                </div>
+            {% endfor %}
+            <div class="block">
+                <div class="block-title">
+                    <h2><strong>Новость</strong></h2>
+                </div>
+                {% include "UnoegohhAdminBundle:News:form.html.twig" with {"form" : form} %}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="block">
+                <div class="block-title">
+                    <h2><strong>Фотогарфии</strong></h2>
+                </div>
+                <div class="gallery" data-toggle="lightbox-gallery">
+                    <div class="row">
+                        {% for photo in item.GetPhotos %}
+                            <div class="col-sm-4 gallery-image">
+                                <img src="{{ photo.url }}" alt="image" width="134" height="89">
+                                <div class="gallery-image-options text-center">
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="{{ photo.url }}" class="gallery-link btn btn-sm btn-alt btn-default">Просмотр</a>
+                                        <a href="{{ path("unoegohh_admin_news_remove", {"id": photo.id}) }}" class="btn btn-sm btn-alt btn-default remove_image" data-toggle="tooltip" title="" data-original-title="Удалить"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <p>Добавление фотографии</p>
+
+                <p>
+                    <span id="eee"></span><br/>
+                <form id="upload_image" action="{{ path('unoegohh_admin_news_add', {"id": item.id}) }}" method="post"><input type='file' name="files[file]" id="imgInp" /></form></p>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

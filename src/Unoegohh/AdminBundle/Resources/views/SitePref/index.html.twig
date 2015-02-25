@@ -1,0 +1,76 @@
+{% extends "UnoegohhAdminBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="content-header">
+        <div class="header-section">
+            <h1>
+                Настройки сайта<br>
+                <small>Телефон и Email для связи</small>
+            </h1>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li><a href="{{ path("unoegohh_admin_homepage") }}">Главная</a></li>
+        <li>Настройки сайта</li>
+    </ul>
+    <div class="row">
+        <div class="col-md-6">
+            {% for i in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="fa fa-check-circle"></i> {{ i }}</h4>
+                </div>
+            {% endfor %}
+            <div class="block">
+                <div class="block-title">
+                    <h2><strong>Параметры</strong></h2>
+                </div>
+                <form method="post" class="form-horizontal form-bordered">
+                    {{ form_widget(form._token) }}
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-hf-email">Текст в контактах</label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.contactsText, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    {{ form_widget(form._token) }}
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-hf-email">Курс евро</label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.priceEUR, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-hf-email">Курс доллара</label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.priceUSD, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-hf-email">Телефон</label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-hf-email">Email</label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group form-actions">
+                        <div class="col-md-9 col-md-offset-3">
+                            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-user"></i> Сохранить
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

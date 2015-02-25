@@ -1,0 +1,59 @@
+
+<form method="post" class="form-horizontal form-bordered">
+    {{ form_widget(form._token) }}
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-email">Название</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-password">Куда ведет баннер</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.url, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-password">Описание</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.descr, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-password">URL картинки (940 на 365 пикс)</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.image_url, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-password">Порядок</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.orderNum, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-password">Включен</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.active) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-password">Показывать описание</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.showDesc) }}
+        </div>
+    </div>
+    <div class="form-group form-actions">
+        <div class="col-md-9 col-md-offset-3">
+            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-user"></i> Сохранить
+            </button>
+        </div>
+    </div>
+</form>

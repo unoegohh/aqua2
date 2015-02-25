@@ -1,0 +1,7 @@
+parameters:
+#    unoegohh_entities.example.class: Unoegohh\EntitiesBundle\Example
+
+services:
+#    unoegohh_entities.example:
+#        class: %unoegohh_entities.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

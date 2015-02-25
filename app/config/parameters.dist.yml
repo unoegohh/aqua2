@@ -1,0 +1,9 @@
+parameters:
+    secret: ThisTokenIsNotSoSecretChangeIt
+    imgur_key: f5592bd9358b539
+    items_per_page: 20
+    mail_to: unoegohh@gmail.com
+    mail_from: unoegohhtest2@gmail.com
+    mail_name: Сообщение с сайта
+    phone_api: 7073e9e6-c2b5-fb44-6d57-bf82a1c2d4c5
+    phone:  9037179470

@@ -1,0 +1,3 @@
+{% for item in menu %}
+    <li><a href="{% if item.staticPage %}/{{ item.staticPage.url }}{% elseif item.url %}{{ item.url }}{% else %}/{% endif %}">{{ item.name }}</a></li>
+{% endfor %}

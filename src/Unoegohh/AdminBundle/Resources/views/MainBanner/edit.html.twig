@@ -1,0 +1,99 @@
+{% extends "UnoegohhAdminBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="content-header">
+        <div class="header-section">
+            <h1>
+                Редактирование баннера
+            </h1>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li><a href="{{ path("unoegohh_admin_homepage") }}">Главная</a></li>
+        <li><a href="{{ path("unoegohh_admin_banners") }}">Баннеры</a></li>
+        <li>Редактирование</li>
+    </ul>
+    <div class="row">
+        <div class="col-md-9">
+            {% for i in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="fa fa-check-circle"></i> {{ i }}</h4>
+                </div>
+            {% endfor %}
+            <div class="block">
+                <div class="block-title">
+                    <h2><strong>Баннер</strong></h2>
+                </div>
+                {% include "UnoegohhAdminBundle:MainBanner:form.html.twig" with {"form" : form} %}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="block">
+                <div class="block-title">
+                    <h2><strong>Загрузка фотографии</strong></h2>
+                </div>
+                {% include "UnoegohhAdminBundle:StaticPage:imageUploader.html.twig" %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(function () {
+            var _validFileExtensions = [".jpg", ".jpeg", ".gif", ".png"];
+
+            function Validate(oForm) {
+                var arrInputs = $("input", oForm);
+                for (var i = 0; i < arrInputs.length; i++) {
+                    var oInput = arrInputs[i];
+                    if (oInput.type == "file") {
+                        var sFileName = oInput.value;
+                        if (sFileName.length > 0) {
+                            var blnValid = false;
+                            for (var j = 0; j < _validFileExtensions.length; j++) {
+                                var sCurExtension = _validFileExtensions[j];
+                                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                                    blnValid = true;
+                                    break;
+                                }
+                            }
+
+                            if (!blnValid) {
+                                alert("Ошибка, " + sFileName + "  с неправильным разширением, допустимые разширения: " + _validFileExtensions.join(", "));
+                                return false;
+                            }
+                        }
+                    }
+                }
+
+                return true;
+            }
+
+            $(document).on('change', '#imgInp', function () {
+
+                if (Validate($('#upload_image'))) {
+
+                    $('#upload_image').submit();
+                }
+
+            });
+            $('#upload_image').ajaxForm({
+                beforeSubmit: function(){
+                    $("#eee").html('<i class="fa fa-asterisk fa-spin text-info"></i>');
+                },
+                success: function (data) {
+                    if (typeof(data.msg) == "undefined") {
+
+                        alert("Ошибка! Звонить админу!!!");
+                    } else {
+                        $("#eee").html(data.msg)
+                    }
+                    $("#imgInp").val("");
+                }
+            });
+        });
+    </script>
+{% endblock %}

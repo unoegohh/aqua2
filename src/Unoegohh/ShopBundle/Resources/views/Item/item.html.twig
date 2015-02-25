@@ -1,0 +1,100 @@
+{% extends "UnoegohhShopBundle:Default:index.html.twig" %}
+
+{% block main %}
+
+    <div class="clearfix"></div>
+    <header class="page-header">
+        <div class="container">
+            <h1 class="title">{{ product.name }}</h1>
+        </div>
+    </header>
+
+    <div class="container">
+    <div class="row">
+    <article class="col-sm-12 col-md-9 content product-page pull-right">
+    <div class="row">
+        <div class="col-sm-5 col-md-5">
+            <div class="image-box">
+                <div class="general-img">
+                    <img alt="" src="{{ product.photos[0].url }}" data-zoom-image="img/content/single-1.png" width="700" height="700">
+                </div><!-- .general-img -->
+
+                <div class="thumblist-box">
+                    <a href="#" class="prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9px" height="16px" viewBox="0 0 9 16" enable-background="new 0 0 9 16" xml:space="preserve">
+					<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#fcfcfc" points="8,15.999 9,14.999 2,8 9,1.001 8,0.001 0,8 "></polygon>
+				  </svg>
+                    </a>
+                    <a href="#" class="next">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9px" height="16px" viewBox="0 0 9 16" enable-background="new 0 0 9 16" xml:space="preserve">
+					<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#fcfcfc" points="1,0.001 0,1.001 7,8 0,14.999 1,15.999 9,8 "></polygon>
+				  </svg>
+                    </a>
+
+                    <div id="thumblist" class="thumblist">
+                        {% for pic in product.photos %}
+                            <a href="#"{% if loop.index == 1 %} class="active"{% endif %} data-image="{{ pic.url }}" data-zoom-image="{{ pic.url }}">
+                                <img alt="" src="{{ pic.url }}" width="700" height="700">
+                            </a>
+                        {% endfor %}
+                    </div><!-- #thumblist -->
+                </div><!-- .thumblist -->
+            </div>
+        </div>
+
+        <div class="col-sm-7 col-md-7">
+
+            <div class="description">
+                {{ product.description | raw  }}
+            </div>
+
+            <div class="price-box">
+                <span class="price">{{ itemPriceBoost(product) |number_format(2, '.', ' ')}} руб</span>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+
+
+    <div class="clearfix"></div>
+
+    </article><!-- .content -->
+
+    <div id="sidebar" class="sidebar col-sm-12 col-md-3">
+        <aside class="widget menu">
+            <header>
+                <h3 class="title">Категории</h3>
+            </header>
+            <nav>
+                <ul>
+                    {% for cat in categories %}
+
+                        {% if cat.getChild | length == 0 %}
+                            <li>
+                                <a href="{{ path('unoegohh_shop_category',  {"categoryId" : cat.id}) }}">{{ cat.name }}</a>
+                            </li>
+
+                        {% endif %}
+                        {% if cat.getChild | length > 0 %}
+                            <li class="parent {% if product.GetCategoryId().Id == cat.GetId or product.GetCategoryId().GetChildId().Id == cat.GetId %} active{% endif %}">
+                                <a href="#"><span class="open-sub"></span>{{ cat.name }}</a>
+                                <ul class="sub">
+                                    {% for cat in cat.child %}
+                                        <li {% if product.GetCategoryId().Id == cat.GetId %} class="active"{% endif %}>
+                                            <a href="{{ path('unoegohh_shop_category',  {"categoryId" : cat.id}) }}">{{ cat.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                    {% endfor %}
+                </ul>
+            </nav>
+        </aside><!-- .menu-->
+
+
+    </div><!-- #sidebar -->
+    </div>
+    </div>{% endblock %}

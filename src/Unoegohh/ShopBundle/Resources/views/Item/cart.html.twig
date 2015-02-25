@@ -1,0 +1,87 @@
+{% extends "UnoegohhShopBundle:Default:index.html.twig" %}
+
+{% block main %}
+    <section id="main" class="entire_width">
+        <div class="container_12">
+            <div class="grid_12">
+
+                <h1 class="page_title">Корзина</h1>
+            </div>
+            <div class="grid_12" ng-show="totalCart">
+
+                <table class="cart_product">
+                    <tbody>
+                    <tr>
+                        <th class="images"></th>
+                        <th class="bg name">Название</th>
+                        <th class="edit"></th>
+                        <th class="bg price">Цена</th>
+                        <th class="qty">Кол-во</th>
+                        <th class="bg subtotal">Итого</th>
+                        <th class="close"></th>
+                    </tr>
+                    <tr ng-repeat="item in cart.items">
+                        <td class="images"><a href="/item/[[ item.id ]]"><img ng-src="[[ item.image ]]"
+                                                                              alt="[[item.name]]"></a></td>
+                        <td class="bg name">[[item.name]]</td>
+                        <td class="edit">dsfsf</td>
+                        <td class="bg price">[[ item.price ]] руб</td>
+                        <td class="qty"><input type="text" name="" value="[[ item.count]]" placeholder="1000"
+                                               ng-model="item.count"></td>
+                        <td class="bg subtotal">[[item.count * item.price | number ]] руб</td>
+                        <td class="close"><a title="close" class="close" href="#" ng-click="deleteOne($index)"></a></td>
+                    </tr>
+                    <tr>
+                        <td colspan="7" class="cart_but">
+                            <button class="continue" onclick="window.location = '/';"><span>icon</span>Продолжить
+                                покупки
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- .grid_12 -->
+
+            <div class="clear"></div>
+
+            <div id="content_bottom" class="shopping_box" ng-show="totalCart">
+                <div class="grid_4">
+
+                </div>
+                <!-- .grid_4 -->
+
+                <div class="grid_4">
+                </div>
+                <!-- .grid_4 -->
+
+                <div class="grid_4">
+                    <div class="bottom_block total">
+                        <table class="subtotal">
+                            <tbody>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr class="grand_total">
+                                <td>Итого</td>
+                                <td class="price">[[ totalCart ]] руб</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button class="checkout" onclick="window.location = '{{ path('unoegohh_shop_cash_order') }}';">
+                            Оформить заказ
+                        </button>
+                    </div>
+                    <!-- .total -->
+                </div>
+                <!-- .grid_4 -->
+            </div>
+
+            <div class="grid_12" ng-hide="totalCart">
+                <br/><br/>
+                <p>Ваша корзина пуста</p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </section>
+{% endblock %}

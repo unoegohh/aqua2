@@ -1,0 +1,33 @@
+{% extends "UnoegohhAdminBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="content-header">
+        <div class="header-section">
+            <h1>
+                Редактирование пользователя
+            </h1>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li><a href="{{ path("unoegohh_admin_homepage") }}">Главная</a></li>
+        <li><a href="{{ path("unoegohh_admin_user") }}">Список пользователей</a></li>
+        <li>Редактирование</li>
+    </ul>
+    <div class="row">
+        <div class="col-md-9">
+            {% for i in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="fa fa-check-circle"></i> {{ i }}</h4>
+                </div>
+            {% endfor %}
+            <div class="block">
+                <div class="block-title">
+                    <h2><strong>Пользователь {{ item.username }}</strong></h2>
+                </div>
+                {% include "UnoegohhAdminBundle:User:form.html.twig" with {"form" : form} %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+parameters:
+    unoegohh_shop.site_pref.class: Unoegohh\ShopBundle\Services\SiteSettingsService
+
+services:
+    unoegohh_shop.pref:
+        class: %unoegohh_shop.site_pref.class%
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+          - { name: twig.extension }

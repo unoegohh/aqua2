@@ -1,0 +1,74 @@
+{% extends "UnoegohhShopBundle:Default:index.html.twig" %}
+{% block title %}Заказ оформлен{% endblock %}
+
+{% block main %}
+    <section id="main">
+        <div class="container_12">
+            <div id="content" class="grid_9">
+                <h1 class="page_title">Заказ оформлен</h1>
+
+                {#<dislidions">#}
+                {#&#123;&#35;<div class="grid-list">&#35;&#125;#}
+                {#&#123;&#35;<a class="grid curent" href="/"><span>img</span></a>&#35;&#125;#}
+                {#&#123;&#35;<a class="list" href="/catalog_list.html"><span>img</span></a>&#35;&#125;#}
+                {#&#123;&#35;</div>&#35;&#125;#}
+                {#<!-- .grid-list -->#}
+
+                {#&#123;&#35;<div class="show">&#35;&#125;#}
+                {#&#123;&#35;<span>Show</span>&#35;&#125;#}
+                {#&#123;&#35;<select title="Show" class="selectBox" style="display: none;">&#35;&#125;#}
+                {#&#123;&#35;<option>1</option>&#35;&#125;#}
+                {#&#123;&#35;<option>2</option>&#35;&#125;#}
+                {#&#123;&#35;<option>3</option>&#35;&#125;#}
+                {#&#123;&#35;<option>4</option>&#35;&#125;#}
+                {#&#123;&#35;<option>5</option>&#35;&#125;#}
+                {#&#123;&#35;<option>6</option>&#35;&#125;#}
+                {#&#123;&#35;<option>7</option>&#35;&#125;#}
+                {#&#123;&#35;<option>8</option>&#35;&#125;#}
+                {#&#123;&#35;<option>9</option>&#35;&#125;#}
+                {#&#123;&#35;<option>10</option>&#35;&#125;#}
+                {#&#123;&#35;<option>11</option>&#35;&#125;#}
+                {#&#123;&#35;<option>12</option>&#35;&#125;#}
+                {#&#123;&#35;</select><a class="selectBox selectBox-dropdown" style="display: inline-block;" title="Show" tabindex="0"><span class="selectBox-label">1</span><span class="selectBox-arrow"></span></a>&#35;&#125;#}
+
+                {#&#123;&#35;<span class="per-page">per page</span>&#35;&#125;#}
+                {#&#123;&#35;</div><!-- .show -->&#35;&#125;#}
+
+                {#&#123;&#35;<div class="sort">&#35;&#125;#}
+                {#&#123;&#35;<span class="sort-by">Sort By</span>&#35;&#125;#}
+                {#&#123;&#35;<select class="selectBox" style="display: none;">&#35;&#125;#}
+                {#&#123;&#35;<option>Position</option>&#35;&#125;#}
+                {#&#123;&#35;<option>Price</option>&#35;&#125;#}
+                {#&#123;&#35;<option>Rating</option>&#35;&#125;#}
+                {#&#123;&#35;<option>Name</option>&#35;&#125;#}
+                {#&#123;&#35;</select><a class="selectBox selectBox-dropdown" style="display: inline-block;" title="" tabindex="0"><span class="selectBox-label">Position</span><span class="selectBox-arrow"></span></a>&#35;&#125;#}
+
+                {#&#123;&#35;<a class="sort_up" href="#">↑</a>&#35;&#125;#}
+                {#&#123;&#35;</div><!-- .sort -->&#35;&#125;#}
+                {#</div>#}
+                <!-- .options -->
+
+                <div class="grid_product">
+                    <div class="grid_12">
+                        <p>В ближайшее время с вами свяжутся</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sidebar" class="grid_3">
+                <aside id="categories_nav">
+                    <h3>Категории</h3>
+
+                    <nav class="left_menu">
+                        {{ render(controller('UnoegohhShopBundle:Render:categories', {'name':category.name})) }}
+                    </nav>
+                    <!-- .left_menu -->
+                </aside>
+                <!-- #categories_nav -->
+
+                <!-- #newsletter_signup -->
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

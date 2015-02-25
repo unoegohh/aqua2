@@ -1,0 +1,61 @@
+imports:
+    - { resource: parameters.dist.yml }
+    - { resource: parameters.yml }
+
+framework:
+    secret: %secret%
+    form: true
+    csrf_protection: true
+    session: ~
+    translator: ~
+    router: { resource: "%kernel.root_dir%/config/routing.yml" }
+    templating: { engines: [twig] }
+
+swiftmailer:
+    transport:  gmail
+    username:   unoegohhtest3@gmail.com
+    password:   Unoegohh123
+    host: smtp.gmail.com
+
+doctrine:
+    dbal:
+        driver:   "%database_driver%"
+        host:     "%database_host%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+    orm:
+        auto_mapping: true
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Unoegohh\UserBundle\Entity\User
+
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/newadmin/, role: ROLE_ADMIN }

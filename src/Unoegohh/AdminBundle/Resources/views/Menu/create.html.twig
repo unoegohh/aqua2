@@ -1,0 +1,26 @@
+{% extends "UnoegohhAdminBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="content-header">
+        <div class="header-section">
+            <h1>
+                Добавление меню
+            </h1>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li><a href="{{ path("unoegohh_admin_homepage") }}">Главная</a></li>
+        <li><a href="{{ path("unoegohh_admin_menu") }}">Элементы меню</a></li>
+        <li>Добавление</li>
+    </ul>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="block">
+                <div class="block-title">
+                    <h2><strong>Элемент меню</strong></h2>
+                </div>
+                {% include "UnoegohhAdminBundle:Menu:form.html.twig" with {"form" : form} %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "UnoegohhShopBundle:Default:index.html.twig" %}
+{% block main %}
+    <style>
+        .price_td{
+            white-space: nowrap;
+        }
+    </style>
+    <header class="page-header">
+        <div class="container">
+            <h1 class="title">
+                {% if not category %}
+                    Каталог
+                {% else %}
+                    {{ category.name }}
+                {% endif %}
+            </h1>
+        </div>
+    </header>
+    <div class="container">
+    <div class="row">
+    <div id="catalog" class="col-sm-12 col-md-9 content pull-right">
+        <form role="form" method="post" action="{{ path("unoegohh_shop_search") }}">
+            <fieldset>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" required placeholder="Артикул или название">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary">Поиск</button>
+
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        {% if products %}
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Фото</th>
+                    <th>Артикул</th>
+                    <th>Название</th>
+                    <th>Цена</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in products %}
+                <tr>
+                    <td><img src="{{ item.Photos[0].url }}" alt="" style="width: 100px"/></td>
+                    <td>{{ item.Article }}</td>
+                    <td><a href="{{ path("unoegohh_shop_item", {"id" : item.getId}) }}">{{ item.name }}</a></td>
+                    <td class="price_td">{{ itemPriceBoost(item) |number_format(2, '.', ' ')}} руб</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Нет результатов</p>
+        {% endif %}
+
+        <div class="clearfix"></div>
+
+
+    </div>
+    <div id="sidebar" class="sidebar col-sm-12 col-md-3">
+        <aside class="widget menu">
+            <header>
+                <h3 class="title">Категории</h3>
+            </header>
+            <nav>
+                <ul>
+                    {% for cat in categories %}
+                        {% if cat.getChild | length == 0 %}
+                            <li>
+                                <a href="{{ path('unoegohh_shop_category',  {"categoryId" : cat.id}) }}">{{ cat.name }}</a>
+                            </li>
+
+                        {% endif %}
+                        {% if cat.getChild | length > 0 %}
+                            <li class="parent {% if category.Id == cat.Id or category.GetChildId().Id == cat.Id %} active{% endif %}">
+                                <a href="{{ path('unoegohh_shop_category',  {"categoryId" : cat.id}) }}"><span class="open-sub"></span>{{ cat.name }}</a>
+                                <ul class="sub">
+                                    {% for cat in cat.child %}
+                                        <li {% if cat.Id == catId %} class="active"{% endif %}>
+                                            <a href="{{ path('unoegohh_shop_category',  {"categoryId" : cat.id}) }}">{{ cat.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+        </aside>
+        <!-- .menu-->
+    </div>
+    <!-- .sidebar -->
+    </div>
+    </div><!-- .container -->
+
+
+
+
+{% endblock %}

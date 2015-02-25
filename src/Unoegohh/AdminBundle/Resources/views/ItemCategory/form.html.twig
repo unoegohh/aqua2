@@ -1,0 +1,45 @@
+
+<form method="post" class="form-horizontal form-bordered">
+    {{ form_widget(form._token) }}
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-email">Название</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-password">Название для ссылки</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.engName, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-password">Описание</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.descr, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-password">Родительский элемент</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.child_id, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-hf-password">Сортировка</label>
+
+        <div class="col-md-9">
+            {{ form_widget(form.orderNum, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group form-actions">
+        <div class="col-md-9 col-md-offset-3">
+            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-user"></i> Сохранить
+            </button>
+        </div>
+    </div>
+</form>

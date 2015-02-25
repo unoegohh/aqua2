@@ -1,0 +1,59 @@
+{% extends "UnoegohhShopBundle:Default:index.html.twig" %}
+
+{% block main %}
+    <div class="container clearfix">
+
+    <div class="sixteen columns"> <h1 class="page-title">{{ item.name }}<span class="line"></span></h1>
+    </div><!-- Page Title -->
+
+
+    <!-- Start Single Post -->
+    <div class="eleven columns top bottom">
+
+    <!-- ==================== Single Post ==================== -->
+    <div class="post gallery bottom">
+
+    <!-- Title Post -->
+
+    <div class="post-meta bottom-2 transparent">
+        <div class="meta"><span class="history  icon gray"></span> Опубликованно {{ item.date | date('d.m.y') }} </div><!-- Date -->
+    </div><!-- End post-meta -->
+        {% if item.Photos.count > 0 %}
+        <div class="image-post bottom-2">
+
+            <div class="flex-container">
+                <div class="flexslider3">
+                    <ul class="slides">
+                        {% for photo in item.Photos %}
+                            <li>
+                                <div class="caption" style="text-align: center;">
+                                    <a href="{{ photo.url }}" rel="prettyPhoto[gallery{{ loop.index }}]"><img  style="height: 200px" src="{{ photo.url }}">
+                                        <span class="hover-effect big zoom"></span></a>
+                                </div><!-- hover effect -->
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+            {% endif %}
+    <div class="post-content bottom">
+
+        {{ item.Descr | raw }}
+    </div><
+
+
+
+
+    </div><!-- End Sidebar Widgets -->
+
+
+    <div class="clearfix"></div>
+
+
+
+
+
+    </div>
+{% endblock %}

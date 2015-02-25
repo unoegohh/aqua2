@@ -1,0 +1,27 @@
+parameters:
+#    unoegohh_admin.example.class: Unoegohh\AdminBundle\Example
+
+services:
+   unoegohh.admin_bundle.imgur_upload:
+      class: Unoegohh\AdminBundle\Service\ImgurUploadService
+      arguments:
+        entityManager: "@doctrine.orm.entity_manager"
+        container: "@service_container"
+        imgur_key: %imgur_key%
+   request_injector:
+        class: Unoegohh\AdminBundle\Service\RequestInjector
+        public: false
+        arguments: ['@service_container']
+   unoegohh.admin_bundle.price_boost:
+      class: Unoegohh\AdminBundle\Service\PriceBoostService
+      arguments:
+        entityManager: "@doctrine.orm.entity_manager"
+        container: "@service_container"
+        request_injector: "@request_injector"
+   unoegohh.twig.price_boost:
+      class: Unoegohh\AdminBundle\Service\PriceBoostTwigService
+      arguments:
+        entityManager: "@doctrine.orm.entity_manager"
+        priceBoost: "@unoegohh.admin_bundle.price_boost"
+      tags:
+        - { name: twig.extension }

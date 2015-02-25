@@ -1,0 +1,30 @@
+
+
+{% extends "UnoegohhAdminBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="content-header">
+        <div class="header-section">
+            <h1>
+                Удаление пользователя
+            </h1>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li><a href="{{ path("unoegohh_admin_homepage") }}">Главная</a></li>
+        <li><a href="{{ path("unoegohh_admin_user") }}">Список пользователей</a></li>
+        <li>Удаление</li>
+    </ul>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="fa fa-times-circle"></i> Удаление</h4> Для удаления нажмите "удалить" если вы уверены!
+            </div>
+
+            <br/>
+            <a class="btn btn-success" href="{{ path("unoegohh_admin_user_remove_ok", {"id" :item.getId()}) }}">Удалить</a>
+            <a class="btn btn-danger" href="{{ path("unoegohh_admin_user") }}">Отмена</a>
+        </div>
+    </div>
+{% endblock %}
