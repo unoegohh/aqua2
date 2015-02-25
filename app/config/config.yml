@@ -12,6 +12,8 @@ framework:
     templating: { engines: [twig] }
 
 swiftmailer:
+    encryption: ssl
+    auth_mode:  login
     transport:  gmail
     username:   unoegohhtest3@gmail.com
     password:   Unoegohh123
