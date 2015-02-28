@@ -34,18 +34,18 @@ class DefaultController extends Controller
 
         if($form->isValid()){
             $order = $form->getData();
-//                        $ch = curl_init("http://sms.ru/sms/send");
-//            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//            curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-//            curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-//
-//                "api_id"		=>	$this->container->getParameter("phone_api"),
-//                "to"			=>	$this->container->getParameter("phone"),
-//                "text"		=>"Поступила новая заявка!"
-//
-//            ));
-//            $body = curl_exec($ch);
-//            curl_close($ch);
+            $ch = curl_init("http://sms.ru/sms/send");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+
+                "api_id"		=>	$this->container->getParameter("phone_api"),
+                "to"			=>	$this->container->getParameter("phone"),
+                "text"		=>"Поступила новая заявка!"
+
+            ));
+            $body = curl_exec($ch);
+            curl_close($ch);
 
             $message = $this->get('mailer')->createMessage()
                 ->setSubject("Сообщение с сайта")
