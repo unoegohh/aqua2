@@ -2,6 +2,7 @@
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class AppKernel extends Kernel
 {
@@ -35,5 +36,15 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__ . '/config/config_' . $this->getEnvironment() . '.yml');
+    }
+    protected function initializeContainer()
+    {
+        parent::initializeContainer();
+        if (PHP_SAPI == 'cli') {
+            $request = new Request();
+            $request->create('/');
+            $this->getContainer()->enterScope('request');
+            $this->getContainer()->set('request', $request, 'request');
+        }
     }
 }
