@@ -26,16 +26,6 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label" for="example-hf-password">Заблокирован</label>
-
-        <div class="col-md-9">
-            <div class="checkbox">
-                {{ form_widget(form.show_to_user) }}
-            </div>
-            <span class="help-block">Если есть галочка будет виден только авторизированным пользователям</span>
-        </div>
-    </div>
-    <div class="form-group">
 
         <div class="col-md-12">
             {{ form_widget(form.text, {'attr': {'class': 'ckeditor', 'rows' : 20}}) }}
