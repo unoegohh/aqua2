@@ -17,6 +17,7 @@ class ItemForm extends AbstractType
             ->add('top', null, array("required" => false))
             ->add('price', null, array("required" => false))
             ->add('priceEUR', null, array("required" => false))
+            ->add('priceUSD', null, array("required" => false))
             ->add('category_id', null, array("required" => true))
         ;
     }

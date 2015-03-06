@@ -47,6 +47,11 @@ class Item
     protected $priceEUR;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $priceUSD;
+
+    /**
      * @ORM\Column(type="boolean", nullable=true)
      */
     protected $active;
@@ -226,6 +231,22 @@ class Item
     public function getArticle()
     {
         return $this->article;
+    }
+
+    /**
+     * @param mixed $priceUSD
+     */
+    public function setPriceUSD($priceUSD)
+    {
+        $this->priceUSD = $priceUSD;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPriceUSD()
+    {
+        return $this->priceUSD;
     }
 
 

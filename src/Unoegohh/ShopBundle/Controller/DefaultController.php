@@ -11,18 +11,20 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
+
         $em = $this->getDoctrine()->getManager();
+        $pageRepo = $em->getRepository("UnoegohhEntitiesBundle:StaticPage");
+        $page  = $pageRepo->findOneBy(array('url' => 'about_us', 'active' => true));
 
-        $banners  = $em->getRepository("UnoegohhEntitiesBundle:MainBanner")->findBy(array('active' => true), array('orderNum' => 'ASC'));
-        $products = $em->getRepository("UnoegohhEntitiesBundle:Item")->findBy(array());
-        $news = $em->getRepository("UnoegohhEntitiesBundle:News")->findBy(array(), array(), 4);
-//        return $this->render('UnoegohhShopBundle:New:index.html.twig');
+        if(!$page){
+            throw new NotFoundHttpException("Cтраница не найдена.");
+        }
+        if($page->getShowToUser() && !$this->getUser()){
 
-        return $this->render('UnoegohhShopBundle:Default:index.html.twig', array(
-            'banners' => $banners,
-            'news' => $news,
-            'products' => $products
-        ));
+            throw new NotFoundHttpException("Cтраница не найдена.");
+        }
+
+        return $this->render('UnoegohhShopBundle:StaticPage:index.html.twig', array('page' => $page));
     }
     public function contactAction(Request $request)
     {
