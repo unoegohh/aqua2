@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Unoegohh\EntitiesBundle\Entity\CustomerRequest;
 use Unoegohh\ShopBundle\Form\CustomerRequestForm;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
