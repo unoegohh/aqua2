@@ -15,11 +15,20 @@
                         <div class="row">
                             <address class="col-sm-6 col-md-6">
                                 <div class="title">Телефон</div>
-                                <div>Рабочий: {{ pref().phone | raw }}</div>
+                                <div>
+
+                                    {% for phone in pref().phone | split(',') %}
+                                        {{ phone }} <br/>
+                                    {% endfor %}
+                                </div>
                             </address>
                             <address class="col-sm-6 col-md-6">
                                 <div class="title">Почта</div>
-                                <div>Контакт: <a href="mailto:{{ pref().email | raw }}">{{ pref().email | raw }}</a></div>
+                                <div>
+                                    {% for email in pref().email | split(',') %}
+                                        <a href="mailto:{{ email }}">{{ email }}</a> <br/>
+                                    {% endfor %}
+                                </div>
                             </address>
                         </div>
                         <hr>

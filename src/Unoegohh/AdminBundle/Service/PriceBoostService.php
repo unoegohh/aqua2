@@ -49,9 +49,9 @@ class PriceBoostService
         $rawResult = 0;
         // sale - price - usd
         if($item->getPriceEUR()){
-            $rawResult = $item->getPriceUSD() * $this->price->getPriceUSD();
-        }elseif($item->getPriceEUR()){
             $rawResult = $item->getPriceEUR() * $this->price->getPriceEUR();
+        }elseif($item->getPriceUSD()){
+            $rawResult = $item->getPriceUSD() * $this->price->getPriceUSD();
         }else{
             $rawResult = $item->getPrice();
         }

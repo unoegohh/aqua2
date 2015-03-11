@@ -13,7 +13,7 @@ class ItemCategoryForm extends AbstractType
         $builder
             ->add('name')
             ->add('engName')
-            ->add('descr', 'textarea')
+            ->add('descr', 'textarea', array('required' => false))
             ->add('child_id')
             ->add('orderNum')
         ;
