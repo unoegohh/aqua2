@@ -57,6 +57,7 @@
                 <thead>
                     <tr>
                         <th class="text-center">Id</th>
+                        <th>Артикул</th>
                         <th>Название</th>
                         <th>Категория</th>
                         <th>Цена</th>
@@ -68,6 +69,7 @@
                     {% for i in result %}
                         <tr>
                             <td class="text-center">{{ i.id }}</td>
+                            <td>{{ i.article }}</td>
                             <td>{{ i.name }}</td>
                             <td>{{ i.getCategoryId().GetName() }}</td>
                             <td>{{ itemPriceBoost(i) }}</td>

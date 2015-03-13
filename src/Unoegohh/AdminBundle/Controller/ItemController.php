@@ -81,6 +81,9 @@ class ItemController extends Controller
                 'notice',
                 'Товар обновлен!'
             );
+            if($request->request->get('but') != null){
+                return $this->redirect($this->generateUrl('unoegohh_admin_food_item'));
+            }
             return $this->redirect($this->generateUrl('unoegohh_admin_food_item_edit', array("id" => $food->getId())));
 
         }
