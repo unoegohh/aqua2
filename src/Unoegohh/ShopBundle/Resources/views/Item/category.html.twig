@@ -47,8 +47,12 @@
                 <tbody>
                 {% for item in products %}
                 <tr>
-                    <td><img src="{{ item.Photos[0].url }}" alt="" style="max-height: 100px;max-width: 100px"/></td>
-                    <td>{{ item.Article }}</td>
+                    <td>
+                        {% if  tem.Photos[0].url %}
+                            <a href="{{ path("unoegohh_shop_item", {"id" : item.getId}) }}"><img src="{{ item.Photos[0].url }}" alt="" style="max-height: 100px;max-width: 100px"/></a>
+                        {% enfif %}
+                    </td>
+                    <td><a href="{{ path("unoegohh_shop_item", {"id" : item.getId}) }}">{{ item.Article }}</a></td>
                     <td><a href="{{ path("unoegohh_shop_item", {"id" : item.getId}) }}">{{ item.name }}</a></td>
                     <td class="price_td">{{ itemPriceBoost(item) |number_format(2, '.', ' ')}} руб</td>
                 </tr>
