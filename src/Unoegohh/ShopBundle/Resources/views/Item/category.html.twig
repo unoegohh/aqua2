@@ -48,9 +48,9 @@
                 {% for item in products %}
                 <tr>
                     <td>
-                        {% if  tem.Photos[0].url %}
+                        {% if  item.Photos[0].url %}
                             <a href="{{ path("unoegohh_shop_item", {"id" : item.getId}) }}"><img src="{{ item.Photos[0].url }}" alt="" style="max-height: 100px;max-width: 100px"/></a>
-                        {% enfif %}
+                        {% endif %}
                     </td>
                     <td><a href="{{ path("unoegohh_shop_item", {"id" : item.getId}) }}">{{ item.Article }}</a></td>
                     <td><a href="{{ path("unoegohh_shop_item", {"id" : item.getId}) }}">{{ item.name }}</a></td>
