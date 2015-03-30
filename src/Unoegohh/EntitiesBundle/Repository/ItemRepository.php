@@ -37,4 +37,14 @@ class ItemRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function getImagesProducts()
+    {
+
+        $qb = $this->createQueryBuilder('u');
+        $qb
+            ->orWhere($qb->expr()->between('u.id',473,557 ));
+            //->orWhere($qb->expr()->between('u.id',21750,21751 ));
+
+        return $qb->getQuery()->getResult();
+    }
 }
