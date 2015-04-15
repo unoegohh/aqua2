@@ -9,6 +9,18 @@ use Unoegohh\UserBundle\Entity\User;
 
 class ItemRepository extends EntityRepository
 {
+    public function getProductsByCategoryRecovery($categoryname, $article)
+    {
+        $qb = $this->createQueryBuilder('u');
+        $qb->leftJoin("u.category_id", "c");
+        $qb->leftJoin("c.child_id", "m");
+        $qb->andWhere("u.article = ?1");
+        $qb->andWhere("m.name = ?2");
+        $qb->setParameter(1,$article);
+        $qb->setParameter(2,$categoryname);
+
+        return $qb->getQuery()->getResult();
+    }
     public function getProductsByCategory(ItemCategory $category = null)
     {
         $qb = $this->createQueryBuilder('u');
