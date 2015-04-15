@@ -54,7 +54,7 @@ class ItemRepository extends EntityRepository
 
         $qb = $this->createQueryBuilder('u');
         $qb
-            ->orWhere($qb->expr()->between('u.id',2047,2084 ));
+            ->orWhere($qb->expr()->between('u.id',2503,2587 ));
             //->orWhere($qb->expr()->between('u.id',21750,21751 ));
 
         return $qb->getQuery()->getResult();

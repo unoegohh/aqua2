@@ -27,16 +27,13 @@ class AddImagesCommand extends ContainerAwareCommand
 
         $pref = $prefRepo->getImagesProducts();
         foreach($pref as $item){
-            $out = $item->getPhotos();
-            foreach($out as $item1){
-                $em->remove($item1);
-            }
             $prefPhoto = new ItemImage();
-            $prefPhoto->setUrl("http://i.imgur.com/fE5XaHo.png");
+            $prefPhoto->setUrl("http://i.imgur.com/r1oaOcJ.jpg");
             $prefPhoto->setItemId($item);
             $em->persist($prefPhoto);
             $em->flush();
         }
+
 
     }
 }
