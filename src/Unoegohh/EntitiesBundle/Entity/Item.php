@@ -32,6 +32,10 @@ class Item
      */
     protected $article;
     /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    protected $import;
+    /**
      * @ORM\Column(type="string", length=65500, nullable=true)
      */
     protected $description;
@@ -102,6 +106,22 @@ class Item
     public function getCategoryId()
     {
         return $this->category_id;
+    }
+
+    /**
+     * @param mixed $import
+     */
+    public function setImport($import)
+    {
+        $this->import = $import;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImport()
+    {
+        return $this->import;
     }
 
     /**

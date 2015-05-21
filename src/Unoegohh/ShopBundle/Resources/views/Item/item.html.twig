@@ -109,7 +109,7 @@
                                     <a href="{{ path('unoegohh_shop_category',  {"categoryId" : cat.id}) }}"><span class="open-sub"></span>{{ cat.name }}</a>
                                     <ul class="sub">
                                         {% for cat in cat.child %}
-                                            <li {% if cat.Id == catId %} class="active"{% endif %}>
+                                            <li {% if cat.Id == category.Id %} class="active"{% endif %}>
                                                 <a href="{{ path('unoegohh_shop_category',  {"categoryId" : cat.id}) }}">{{ cat.name }}</a>
                                             </li>
                                         {% endfor %}
