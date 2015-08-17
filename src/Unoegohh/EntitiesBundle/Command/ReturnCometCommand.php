@@ -38,7 +38,7 @@ class ReturnCometCommand extends ContainerAwareCommand
         $output->writeln($this->getContainer()->get('kernel')->getRootDir());
 
         $itemCategory = new ItemCategory();
-        $itemCategory->setName("Comet1");
+        $itemCategory->setName("Comet");
         $itemCategory->setEngName("comet");
         $em->persist($itemCategory);
 
