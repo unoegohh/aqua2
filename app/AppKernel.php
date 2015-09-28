@@ -6,6 +6,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AppKernel extends Kernel
 {
+    public function init()
+    {
+        date_default_timezone_set( 'Europe/Paris' );
+        parent::init();
+    }
     public function registerBundles()
     {
         $bundles = array(

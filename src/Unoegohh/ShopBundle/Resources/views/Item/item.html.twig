@@ -72,13 +72,14 @@
 
         <div class="col-sm-7 col-md-7">
 
-            <div class="description">
-                {{ product.description | raw  }}
-            </div>
-
             <div class="price-box">
                 <span class="price">{{ itemPriceBoost(product) |number_format(2, '.', ' ')}} руб</span>
             </div>
+            <div class="description">
+                <p>Доставка: ​БЕСПЛАТНО до транспортной компании​.</p>
+                {{ product.description | raw  }}
+            </div>
+
         </div>
 
         <div class="clearfix"></div>
